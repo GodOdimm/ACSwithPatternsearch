@@ -1,10 +1,24 @@
 # ACSwithPatternsearch
 以求下面这个公式的最小值为例子
 $$\sum_{i=1}^{3}[(x_{i+1}-{x_i}^2)+(x_i-1)^2]  x_i \in [-30,30]$$
-算法描述
+## 算法描述
 1. 蚂蚁随机分布在四维空间，根据位置赋予初始信息素 ${T_0}$
 2. 对每一只蚂蚁 $ant_k$，先运用模式搜索法局部搜索。然后依据概率 $p_{ks}$选择是否向较优蚂蚁s移动，C是上一次迭代向蚂蚁S移动的蚂蚁数量，如果过多，会让这个概率减小，起到防止算法早熟的作用。2. 对每一只蚂蚁 $ant_k$，先运用模式搜索法局部搜索。然后依据概率 $p_{ks}$选择是否向较优蚂蚁s移动，C是上一次迭代向蚂蚁S移动的蚂蚁数量，如果过多，会让这个概率减小，起到防止算法早熟的作用。
-   ![image]([pic/pks.png](https://github.com/GodOdimm/ACSwithPatternsearch/blob/main/pic/pks.png)https://github.com/GodOdimm/ACSwithPatternsearch/blob/main/pic/pks.png)
-4. 更新信息素
-5. k=k+1,若k<最大迭代次数，转2，否则转5
-6. 算法结束
+   ![](https://github.com/GodOdimm/ACSwithPatternsearch/blob/main/pic/pks.png)
+3. 更新信息素4
+4. k=k+1,若k<最大迭代次数，转2，否则转5
+5. 算法结束
+## 结果
+### 普通蚁群算法局限性
+**普通蚁群算法**，难以收敛，容易陷入局部最优
+![](https://github.com/GodOdimm/ACSwithPatternsearch/blob/main/pic/没有任何优化.jpg)
+
+### 加入模式搜索后
+连续五次收敛曲线。收敛极快，精度比起普通蚁群算法精度高了几个数量级。
+![连续五次收敛曲线](https://github.com/GodOdimm/ACSwithPatternsearch/blob/main/pic/5次ACSSF曲线.jpg)
+
+### 本算法优点
+蚁群算法需要记录路径，因此随着维度的增加，对空间的划分是呈现指数增加，对空间要求很高。但求极值问题本身不关心如何到达极值，因此本算法舍弃了路径追踪。时间复杂度/空间复杂度/收敛速度/精度都远低于普通蚁群算法。
+
+
+
